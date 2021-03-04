@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { ProductListComponent } from './product-list.component';
 import { ProductDetailComponent } from './product-detail.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
+import { ProductResolver } from './product-resolver.service';
 
 import { SharedModule } from '../shared/shared.module';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -17,11 +18,13 @@ import { RouterModule } from '@angular/router';
       },
       {
         path: 'products/:id',
-        component: ProductDetailComponent
+        component: ProductDetailComponent,
+        resolve: { resolvedData: ProductResolver }
       },
       {
         path: 'products/:id/edit',
-        component: ProductEditComponent
+        component: ProductEditComponent,
+        resolve: { resolvedData: ProductResolver }
       }
     ])
   ],
