@@ -24,12 +24,14 @@ export class ProductEditComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const resolvedData: ProductResolved = this.route
-      .snapshot.data.resolvedData;
+    this.route.data.subscribe(data => {
+      const resolvedData: ProductResolved =
+        data.resolvedData;
 
-    this.errorMessage = resolvedData.error;
+      this.errorMessage = resolvedData.error;
 
-    this.onProductRetrieved(resolvedData.product);
+      this.onProductRetrieved(resolvedData.product);
+    });
   }
 
   onProductRetrieved(product: Product): void {
