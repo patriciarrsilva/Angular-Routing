@@ -79,7 +79,7 @@ export class ProductEditComponent implements OnInit {
     this.validate();
 
     if (path) {
-      return this.dataIsValid.path;
+      return this.dataIsValid[path];
     }
 
     return (
