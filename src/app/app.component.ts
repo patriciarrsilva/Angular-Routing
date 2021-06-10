@@ -26,7 +26,7 @@ export class AppComponent {
     return this.authService.isLoggedIn;
   }
 
-  get isMessageDisplayed(): boolean{
+  get isMessageDisplayed(): boolean {
     return this.messageService.isDisplayed;
   }
 
@@ -70,6 +70,8 @@ export class AppComponent {
   }
 
   hideMessages(): void {
+    this.router.navigate([{ outlets: { popup: null } }]);
+
     this.messageService.isDisplayed = false;
   }
 
